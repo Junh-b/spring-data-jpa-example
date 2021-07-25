@@ -4,7 +4,3 @@ spring:
       org.h2.Driver
     url:
       jdbc:h2:mem:db
-    username:
-      sa
-    password:
-      sa
