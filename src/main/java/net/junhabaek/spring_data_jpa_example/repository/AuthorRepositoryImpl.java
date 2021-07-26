@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class AuthorRepositoryImpl implements AuthorRepository {
 
     @PersistenceContext

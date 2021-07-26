@@ -10,6 +10,6 @@ public class Novel {
     private Long id;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="author_id")
+    @JoinColumn(name="author_id", foreignKey = @ForeignKey(name="FK_novel_author"))
     private Author author;
 }
