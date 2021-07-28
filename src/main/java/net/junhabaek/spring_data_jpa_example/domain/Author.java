@@ -29,4 +29,8 @@ public class Author {
         author.name= name;
         return author;
     }
+
+    public void addNovel(Novel novel){
+        this.novels.add(novel);
+    }
 }

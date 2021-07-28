@@ -21,6 +21,11 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
+    public Author findByIdNotInitiated(Long id) {
+        return em.getReference(Author.class, id);
+    }
+
+    @Override
     public List<Author> findByName(String name) {
         return em.createQuery("select a from Author a where a.name=?1", Author.class)
                 .setParameter(1, name)
