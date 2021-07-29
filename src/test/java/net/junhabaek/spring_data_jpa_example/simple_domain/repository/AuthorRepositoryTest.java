@@ -11,6 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import javax.persistence.PersistenceException;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -81,6 +82,23 @@ public class AuthorRepositoryTest extends RepositoryTestTemplate {
         //then
         assertEquals(firstNovel.getName(), expectedFirstBookName);
         assertEquals(secondNovel.getName(), expectedSecondBookName);
+    }
+
+    @Sql("classpath:db/manyAuthorManyNovel.sql")
+    @Test
+    void findAllAuthorWith3Novels() {
+        //given
+        List<String> expectedBookNames = Arrays.asList("a1","a2", "a3", "b1", "b2", "b3");
+
+        //when
+        List<Author> authors = authorRepository.findAll();
+
+        //then
+        authors.forEach(author->{
+            List<Novel> novels = author.getNovels();
+            Boolean result = novels.stream().allMatch(novel-> expectedBookNames.contains(novel.getName()));
+            assertEquals(result, Boolean.TRUE);
+        });
     }
 
     @Sql("classpath:db/dataWithNovel.sql")

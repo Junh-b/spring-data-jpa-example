@@ -32,6 +32,12 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
+    public List<Author> findAll() {
+        return em.createQuery("select a from Author a join fetch a.novels", Author.class)
+                .getResultList();
+    }
+
+    @Override
     public void save(Author author) {
         if(author.getId()==null){
             em.persist(author);

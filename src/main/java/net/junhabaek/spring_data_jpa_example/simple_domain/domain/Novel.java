@@ -2,6 +2,7 @@ package net.junhabaek.spring_data_jpa_example.simple_domain.domain;
 
 import javax.persistence.*;
 
+@Table
 @Entity
 public class Novel {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
