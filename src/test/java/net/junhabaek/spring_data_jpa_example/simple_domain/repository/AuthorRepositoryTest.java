@@ -1,8 +1,8 @@
-package net.junhabaek.spring_data_jpa_example.repository;
+package net.junhabaek.spring_data_jpa_example.simple_domain.repository;
 
-import net.junhabaek.spring_data_jpa_example.domain.Author;
-import net.junhabaek.spring_data_jpa_example.domain.AuthorRepository;
-import net.junhabaek.spring_data_jpa_example.domain.Novel;
+import net.junhabaek.spring_data_jpa_example.simple_domain.domain.Author;
+import net.junhabaek.spring_data_jpa_example.simple_domain.domain.AuthorRepository;
+import net.junhabaek.spring_data_jpa_example.simple_domain.domain.Novel;
 import net.junhabaek.spring_data_jpa_example.template.RepositoryTestTemplate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

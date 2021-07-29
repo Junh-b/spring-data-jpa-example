@@ -1,13 +1,10 @@
-package net.junhabaek.spring_data_jpa_example.domain;
+package net.junhabaek.spring_data_jpa_example.simple_domain.domain;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

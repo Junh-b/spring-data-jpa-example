@@ -1,6 +1,4 @@
-package net.junhabaek.spring_data_jpa_example.domain;
-
-import lombok.Getter;
+package net.junhabaek.spring_data_jpa_example.simple_domain.domain;
 
 import javax.persistence.*;
 

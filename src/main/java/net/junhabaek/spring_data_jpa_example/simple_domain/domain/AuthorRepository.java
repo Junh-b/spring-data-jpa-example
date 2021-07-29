@@ -1,4 +1,4 @@
-package net.junhabaek.spring_data_jpa_example.domain;
+package net.junhabaek.spring_data_jpa_example.simple_domain.domain;
 
 import java.util.List;
 

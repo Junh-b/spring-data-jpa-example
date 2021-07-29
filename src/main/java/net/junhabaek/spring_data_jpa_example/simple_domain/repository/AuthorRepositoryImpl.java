@@ -1,8 +1,7 @@
-package net.junhabaek.spring_data_jpa_example.repository;
+package net.junhabaek.spring_data_jpa_example.simple_domain.repository;
 
-import lombok.RequiredArgsConstructor;
-import net.junhabaek.spring_data_jpa_example.domain.Author;
-import net.junhabaek.spring_data_jpa_example.domain.AuthorRepository;
+import net.junhabaek.spring_data_jpa_example.simple_domain.domain.Author;
+import net.junhabaek.spring_data_jpa_example.simple_domain.domain.AuthorRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
