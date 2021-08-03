@@ -2,7 +2,8 @@ package net.junhabaek.spring_data_jpa_example.inheritance_domain.repository;
 
 import net.junhabaek.spring_data_jpa_example.inheritance_domain.domain.*;
 import net.junhabaek.spring_data_jpa_example.template.RepositoryTestTemplate;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
@@ -14,8 +15,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Import(ContentRepositoryImpl.class)
-public class ContentRepositoryTest extends RepositoryTestTemplate {
+@Import({AuthorRepositoryImpl.class, ContentRepositoryImpl.class})
+public class AuthorRepositoryTest extends RepositoryTestTemplate {
+
+    @Autowired
+    AuthorRepository authorRepository;
 
     @Autowired
     ContentRepository contentRepository;
@@ -61,54 +65,20 @@ public class ContentRepositoryTest extends RepositoryTestTemplate {
     }
 
     @Test
-    void FindWebtoon_HaveDrawingAuthor() {
+    void FindAuthor_HaveContents() {
         //given
-        String webtoonName = "webtoon1";
-        String expectedDrawingAuthorName = "picasso";
-
-        //when
-        List<Webtoon> webtoons = contentRepository.findWebtoonByName(webtoonName);
-//        System.out.println("result size: "+webtoons.size());
-        Webtoon webtoon = webtoons.get(0);
-
-        //then
-        assertEquals(webtoon.getDrawingAuthor().getName(), expectedDrawingAuthorName);
-    }
-
-    @Test
-    void FindWebtoon_HaveWebtoonEpisodes() {
-        //given
-        String webtoonName = "webtoon1";
-        String expectedEpisodeName = "episode1";
-        String expectedImageURL = "https://tech.junhabaek.net";
-
-        //when
-        List<Webtoon> webtoons = contentRepository.findWebtoonByName(webtoonName);
-//        System.out.println("result size: "+webtoons.size());
-        Webtoon webtoon = webtoons.get(0);
-        WebtoonEpisode episode = (WebtoonEpisode) webtoon.getEpisodes().get(0);
-
-        //then
-        assertEquals(episode.getName(), expectedEpisodeName);
-        assertEquals(episode.getImageURL(), expectedImageURL);
-    }
-
-    @Test
-    void FindContents_ConsistOfWebtoonsAndNovels() {
-        //given
+        String authorName ="Shakespeare";
         List<String> contentNames = Arrays.asList("webtoon1", "novel1");
         Boolean expectedMatchingResult = true;
 
         //when
-        List<Content> contents = contentRepository.findAllContents();
-//        System.out.println("length: "+contents.size());
+        Author author = authorRepository.findAuthorsByName(authorName).get(0);
 
         //then
-        Boolean matchingResult = contents.stream()
+        Boolean matchingResult = author.getContents().stream()
                 .allMatch(content -> contentNames.contains(content.getName()));
 
-        contents.forEach(content-> System.out.println(content.getClass()));
-
+        assertEquals(2, author.getContents().size());
         assertEquals(expectedMatchingResult, matchingResult);
     }
 }

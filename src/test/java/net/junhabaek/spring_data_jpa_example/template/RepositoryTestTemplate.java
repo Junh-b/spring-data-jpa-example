@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 //@Import(OrderRepositoryImpl.class)
 @Transactional
 @Disabled
-public class RepositoryTestTemplate {
+public abstract class RepositoryTestTemplate {
 //    @Autowired
 //    OrderRepository orderRepository;
 //

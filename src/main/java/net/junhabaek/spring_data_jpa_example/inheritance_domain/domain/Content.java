@@ -1,5 +1,6 @@
 package net.junhabaek.spring_data_jpa_example.inheritance_domain.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Getter @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
+@EqualsAndHashCode(of = {"id"})
 @Entity
 public abstract class Content {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
