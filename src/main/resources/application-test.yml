@@ -8,3 +8,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+
+test:
+  init_with_sql:
+    false
