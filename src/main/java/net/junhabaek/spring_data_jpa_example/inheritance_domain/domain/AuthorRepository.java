@@ -5,4 +5,6 @@ import java.util.List;
 public interface AuthorRepository {
     Author findAuthorById(Long id);
     List<Author> findAuthorsByName(String name);
+
+    void save(Author author);
 }

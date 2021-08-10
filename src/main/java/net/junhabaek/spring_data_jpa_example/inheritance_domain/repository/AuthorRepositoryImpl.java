@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
+@Repository("InheritanceAuthorRepositoryImpl")
 public class AuthorRepositoryImpl implements AuthorRepository {
     @PersistenceContext
     EntityManager em;
@@ -26,5 +26,15 @@ public class AuthorRepositoryImpl implements AuthorRepository {
                         " where a.name=?1", Author.class)
                 .setParameter(1, name)
                 .getResultList();
+    }
+
+    @Override
+    public void save(Author author) {
+        if(author.getId()==null){
+            em.persist(author);
+        }
+        else{
+            em.merge(author);
+        }
     }
 }

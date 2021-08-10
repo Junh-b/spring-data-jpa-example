@@ -28,12 +28,10 @@ public class ContentRepositoryTest extends RepositoryTestTemplate {
     void initContents(){
 
         // create Author
-        Author drawingAuthor = new Author();
-        drawingAuthor.setName("picasso");
+        Author drawingAuthor = Author.createAuthor("picasso");
         entityManager.persist(drawingAuthor);
 
-        Author storyAuthor = new Author();
-        storyAuthor.setName("Shakespeare");
+        Author storyAuthor = Author.createAuthor("Shakespeare");
         entityManager.persist(storyAuthor);
 
         // create Webtoon
