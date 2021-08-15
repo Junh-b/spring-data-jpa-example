@@ -8,6 +8,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -102,7 +103,10 @@ public class ArticlePersistenceTest extends RepositoryTestTemplate {
         em.clear();
 
         //then
-        Article persistedArticle = em.find(Article.class, 1L);
-        Assertions.assertNotEquals(article.getId(), persistedArticle.getId());
+        Article articleId2 = em.find(Article.class, 2L);
+        Assertions.assertNull(articleId2);
+
+        Article articleId1 = em.find(Article.class, 1L);
+        Assertions.assertNotNull(articleId1);
     }
 }
